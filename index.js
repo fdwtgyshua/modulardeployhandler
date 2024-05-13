@@ -1,12 +1,17 @@
-function moveZeroes(nums) {
-  let index = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] !== 0) {
-      nums[index++] = nums[i];
+function pathSum(root, sum) {
+  if (!root) return [];
+  const result = [];
+  const path = [];
+  const traverse = (node, sum) => {
+    if (!node) return;
+    path.push(node.val);
+    if (!node.left && !node.right && sum === node.val) {
+      result.push([...path]);
     }
-  }
-  for (let i = index; i < nums.length; i++) {
-    nums[i] = 0;
-  }
-  return nums;
+    traverse(node.left, sum - node.val);
+    traverse(node.right, sum - node.val);
+    path.pop();
+  };
+  traverse(root, sum);
+  return result;
 }
