@@ -1,3 +1,3 @@
-function isPalindrome(str) {
-  return str === str.split("").reverse().join("");
-}
+const word = "hello";
+const reversedWord = word.split("").reverse().join("");
+console.log(reversedWord); // olleh
